@@ -45,12 +45,12 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
-	@PostMapping
+	@PostMapping("cadastrar-produto")
 	public ResponseEntity<Produto>post(@Valid @RequestBody Produto produto){
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
 	}
 	
-	@PutMapping
+	@PutMapping("atualizar-produto")
 	public ResponseEntity<Produto>put(@Valid @RequestBody Produto produto){
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
 	}
