@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +22,7 @@ import br.com.viceri.repository.UsuarioRepository;
 import br.com.viceri.service.UsuarioService;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/users")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
@@ -44,7 +43,7 @@ public class UsuarioController {
 				.orElse(ResponseEntity.notFound().build());	
 	}
 	
-	@PostMapping("/logar")
+	@PostMapping("/login")
 	public ResponseEntity<UserLogin> login(@RequestBody Optional<UserLogin> user){
 		return usuarioService.autenticarUsuario(user)
 				.map(resposta -> ResponseEntity.ok(resposta))
@@ -58,11 +57,5 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
-	@PutMapping("/atualizar")
-	public ResponseEntity<Usuario> putUsuario(@Valid @RequestBody Usuario usuario) {
-		return usuarioService.atualizarUsuario(usuario)
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
-				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-	}
 	
 }

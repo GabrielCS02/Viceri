@@ -14,9 +14,11 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tb_users")
 public class Usuario {
 
 	@Id
@@ -26,6 +28,7 @@ public class Usuario {
 	@NotBlank(message= "Atributo nome não pode estar vazio!")
 	private String nome;
 	
+	@Schema(example = "email@email.com.br")
 	@NotBlank(message= "Atributo email não pode estar vazio!")
 	@Email
 	private String email;
@@ -33,9 +36,9 @@ public class Usuario {
 	@NotBlank(message= "Atributo senha não pode estar vazio!")
 	private String senha;
 
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
-	private List<Produto> produto;
+	private List<TaskList> taskList;
 	
 	public long getId() {
 		return id;
@@ -69,12 +72,12 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public List<Produto> getProduto() {
-		return produto;
+	public List<TaskList> getTaskList() {
+		return taskList;
 	}
 
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
+	public void setTaskList(List<TaskList> taskList) {
+		this.taskList = taskList;
 	}
 
 	
