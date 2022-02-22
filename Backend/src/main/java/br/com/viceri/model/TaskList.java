@@ -25,15 +25,17 @@ public class TaskList {
 	
 	private String subTarefas;
 	
-	@NotBlank(message = "O produto deve conter uma breve descrição sobre o mesmo")
+	@NotBlank(message = "A tarefa deve ter uma prioridade entre baixo, médio ou alto")
 	private String prioridade;
 	
-	@NotNull(message = "Deve haver uma quantidade em cima do produto.")
+	@NotNull(message = "O usuário deve informar se a tarefa foi concluída ou não")
 	private Boolean status;
+	
 	
 	@ManyToOne
 	@JsonIgnoreProperties("taskList")
 	private Usuario usuario;
+	
 	
 
 	public long getId() {
