@@ -39,11 +39,7 @@ public class TaskListController {
 		return ResponseEntity.ok(taskListRepository.findAllByTarefasContainingIgnoreCase(tarefas));
 	}
 	
-	@GetMapping
-	public ResponseEntity<List<TaskList>> GetByStatus(@PathVariable Boolean status){
-		return ResponseEntity.ok(taskListRepository.findAllByStatusContainingIgnoreCase(status));
-	}
-	
+
 	@PostMapping
 	public ResponseEntity<TaskList>post(@Valid @RequestBody TaskList taskList){
 		return ResponseEntity.status(HttpStatus.CREATED).body(taskListRepository.save(taskList));

@@ -14,7 +14,6 @@ import br.com.viceri.model.TaskList;
 @Repository
 public interface TaskListRepository extends JpaRepository <TaskList, Long> {
 
-	public List<TaskList>findAllByStatusContainingIgnoreCase(Boolean status);
 
 	public Optional<TaskList>findByStatus(Boolean status);
 
