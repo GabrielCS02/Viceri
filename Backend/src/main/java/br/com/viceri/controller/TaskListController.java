@@ -34,10 +34,14 @@ public class TaskListController {
 
 	}
 	
-	
 	@GetMapping("/tarefas{tarefas}")
 	public ResponseEntity<List<TaskList>> GetByTarefas(@PathVariable String tarefas){
 		return ResponseEntity.ok(taskListRepository.findAllByTarefasContainingIgnoreCase(tarefas));
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<TaskList>> GetByStatus(@PathVariable Boolean status){
+		return ResponseEntity.ok(taskListRepository.findAllByStatusContainingIgnoreCase(status));
 	}
 	
 	@PostMapping
