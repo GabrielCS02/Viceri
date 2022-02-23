@@ -9,3 +9,4 @@ Caso queira rodar a aplicação na máquina, basta acessa o arquivo application.
 
 na pasta de documentação, está o documento PDF gerado via Swagger.
 
+Tanto branch "develop" quanto a pasta Backend possuem o código-fonte da aplicação.
